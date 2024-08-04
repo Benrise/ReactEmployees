@@ -4,19 +4,38 @@ import { paths } from "./types";
 import HomePage from "@/2_pages/home";
 import LoginPage from "@/2_pages/login";
 import RegisterPage from "@/2_pages/register";
+import { AuthLayout, DefaultLayout } from "../layouts";
 
 export const routes: RouteObject[]  = [
     {
         path: paths.home,
-        element: <HomePage/>,
+        element: <DefaultLayout/>,
+        children: [
+            {
+                element: <HomePage/>,
+                index: true
+            }
+        ]
     },
     {
+        element: <AuthLayout />,
         path: paths.login,
-        element: <LoginPage/>,
+        children: [
+            {
+                element: <LoginPage />,
+                index: true
+            },
+        ],
     },
     {
+        element: <AuthLayout />,
         path: paths.register,
-        element: <RegisterPage/>,
+        children: [
+            {
+                element: <RegisterPage />,
+                index: true
+            },
+        ],
     },
     {
         path: '*',

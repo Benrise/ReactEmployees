@@ -4,3 +4,7 @@ export type CrudErrorResponse = {
         message: string;
     }
 }
+
+export class BaseDto {
+    id?: number;
+}
