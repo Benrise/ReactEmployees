@@ -1,6 +1,6 @@
 import { Card, Form, Space, Typography, Button } from "antd";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { isErrorWithMessage } from "@/6_shared/utils/utils";
 import { paths } from "@/1_app/router";
 import { PasswordInput } from "@/6_shared/ui/password-input";
@@ -14,7 +14,7 @@ export const Login: React.FC = () => {
 
   const login = async (data: UserDto) => {
     try {
-      navigate("/");
+      navigate(paths.home);
     } catch (err) {
       const maybeError = isErrorWithMessage(err);
 
@@ -40,7 +40,7 @@ export const Login: React.FC = () => {
                 Войти
             </Button>
             <Typography.Text>
-                Нет аккаунта? <Link to={paths.register}>Зарегистрируйтесь</Link>
+                Нет аккаунта? <NavLink to={paths.register}>Зарегистрируйтесь</NavLink>
             </Typography.Text>
             
             <ErrorMessage message={error} />
